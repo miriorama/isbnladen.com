@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ec542a">
+  <title>isbnladen — Libri ricercatissimi</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/fn.js" defer></script>
+</head>
+<body class="biblio">
+  <header class="biblio-header">
+    <a class="biblio-logo" href="./" aria-label="isbnladen, pagina iniziale">isbn<span class="biblio-wordmark">laden</span><span class="biblio-logo-mark" aria-hidden="true">↗</span></a>
+    <nav class="biblio-nav" aria-label="Navigazione principale">
+      <button id="catalog-tab" class="biblio-tab" aria-pressed="true" onclick="Biblio.showCatalog()">Esplora il catalogo</button>
+      <button id="saved-tab" class="biblio-tab" aria-pressed="false" onclick="Biblio.showSaved()">La mia lista <span id="saved-count">0</span></button>
+    </nav>
+    <a class="biblio-external" href="https://cloud.sbn.it/opac/TO0/ricercaSemplice" target="_blank" rel="noopener noreferrer">Catalogo SBN ↗</a>
+  </header>
+  <main class="biblio-main">
+    <section class="biblio-hero" aria-labelledby="hero-title">
+      <div class="biblio-intro">
+        <p class="biblio-eyebrow">UN NOME SOSPETTO. OTTIME LETTURE.</p>
+        <h1 id="hero-title">Libri molto<br><em>ricercati.</em></h1>
+        <p class="biblio-description">isbnladen. Sì, hai letto bene: c’è ISBN davanti.<br>Qui si cercano libri nelle biblioteche Anna Frank e Cuneo. Anche quelli sotto copertura rigida.</p>
+      </div>
+      <div class="biblio-art" aria-hidden="true">
+        <div class="biblio-poster"><span class="biblio-poster-label">ISBNLADEN / RICERCATO SPECIALE</span><strong>Sotto<br>copertura.<br>Rigida.</strong><span class="biblio-poster-star">✳</span><span class="biblio-poster-foot">IDENTIFICA. LOCALIZZA. LEGGI.</span></div>
+        <div class="biblio-ticket"><span>SEGNI PARTICOLARI: ISBN</span><strong>Avvistato<br>tra gli scaffali.</strong><div class="biblio-barcode"></div><small>TO0 / HA + 50</small></div>
+      </div>
+    </section>
+    <section id="search-panel" class="biblio-search" aria-label="Cerca nel catalogo">
+      <form onsubmit="Biblio.submit(event)">
+        <label class="biblio-label" for="query">01 / IDENTIKIT DEL LIBRO</label>
+        <div class="biblio-searchbar"><span aria-hidden="true">⌕</span><input id="query" type="search" placeholder="Titolo, autore, ISBN. Hai qualche indizio?" required maxlength="250" autocomplete="off"><label class="biblio-sr" for="field">Campo di ricerca</label><select id="field"><option value="any">Tutti i campi</option><option value="titolo">Titolo</option><option value="nome">Autore</option><option value="soggetto">Soggetto</option><option value="isbn">ISBN</option></select><button class="biblio-primary" type="submit">Avvia la ricerca <span aria-hidden="true">→</span></button></div>
+      </form>
+      <div class="biblio-suggestions"><span>Le prime piste:</span><button onclick="Biblio.suggest('Italo Calvino', 'nome')">Italo Calvino ↗</button><button onclick="Biblio.suggest('Elena Ferrante', 'nome')">Elena Ferrante ↗</button><button onclick="Biblio.suggest('montagna', 'any')">La montagna ↗</button></div>
+    </section>
+    <section class="biblio-results" aria-labelledby="results-title">
+      <div class="biblio-results-head"><div><p id="results-eyebrow" class="biblio-eyebrow">DUE BIBLIOTECHE SOTTO OSSERVAZIONE</p><h2 id="results-title">Ogni ricerca comincia da un indizio.</h2></div><label id="sort-wrap" hidden>Ordina per <select id="sort" onchange="Biblio.sort()"><option value="score">Rilevanza</option><option value="datada:desc">Più recenti</option><option value="datada:asc">Meno recenti</option></select></label></div>
+      <p id="status" class="biblio-status" role="status" aria-live="polite">Consulta i cataloghi di Anna Frank e Cuneo. I ricercati finiscono nella tua lista di lettura.</p>
+      <div id="results" class="biblio-cards"></div>
+      <div id="empty" class="biblio-empty"><span aria-hidden="true">✳</span><h3>Nessun identikit, nessun ricercato.</h3><p>Lascia un titolo, un autore o un ISBN.<br>Al sopralluogo tra gli scaffali pensiamo noi.</p><small>RICERCA NEL CATALOGO SBN · BIBLIOTECHE HA + 50</small></div>
+      <nav id="pagination" class="biblio-pagination" aria-label="Pagine dei risultati" hidden><button id="previous" onclick="Biblio.page(-1)">← Precedente</button><span id="page-label"></span><button id="next" onclick="Biblio.page(1)">Successiva →</button></nav>
+    </section>
+    <aside class="biblio-note"><span aria-hidden="true">↗</span><div><strong>Localizzalo. Prendilo in prestito. Restituiscilo.</strong><p>Controlla qui disponibilità e collocazioni. Apri la scheda SBN per i servizi della biblioteca; lo stato delle copie può cambiare.</p></div><a href="https://cloud.sbn.it/opac/TO0/ricercaSemplice" target="_blank" rel="noopener noreferrer">Vai al catalogo SBN ↗</a></aside>
+  </main>
+  <footer class="biblio-footer"><span class="biblio-logo">isbn<span class="biblio-wordmark">laden</span></span><p>isbnladen: ricercato per eccesso di consonanti.</p><span>Interfaccia indipendente · Dati SBN Cloud</span></footer>
+  <noscript>Per cercare attiva JavaScript oppure visita il catalogo SBN tramite il collegamento in alto.</noscript>
+</body>
+</html>
