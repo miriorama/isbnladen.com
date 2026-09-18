@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 440" fill="none">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" stroke="#e7ecd3" stroke-opacity=".09"/></pattern>
+    <path id="contour" d="M-60 310C-25 183 62 268 88 159S184 39 248 99s38 145 125 122 142-3 154 116-108 176-182 133S182 324 114 379-103 468-60 310Z"/>
+  </defs>
+  <path fill="#263d32" d="M0 0h480v440H0z"/>
+  <path fill="url(#grid)" d="M0 0h480v440H0z"/>
+  <g stroke="#b9c6a2" stroke-opacity=".35" stroke-width="1">
+    <use href="#contour"/>
+    <use href="#contour" transform="translate(24 22) scale(.9)"/>
+    <use href="#contour" transform="translate(48 44) scale(.8)"/>
+    <use href="#contour" transform="translate(72 66) scale(.7)"/>
+    <use href="#contour" transform="translate(96 88) scale(.6)"/>
+    <use href="#contour" transform="translate(120 110) scale(.5)"/>
+    <use href="#contour" transform="translate(144 132) scale(.4)"/>
+    <use href="#contour" transform="translate(168 154) scale(.3)"/>
+    <path d="M300-30c-94 84-3 129 93 72S562 63 482 150M308-10c-67 67 5 85 82 40S518 67 468 123M330 0c-40 38 2 51 54 18"/>
+  </g>
+  <path d="m92 342 47-55 58 16 26-81 62-20-12-73 72-37" stroke="#d9ef87" stroke-width="3" stroke-dasharray="7 7" stroke-linecap="round" stroke-linejoin="round"/>
+  <g stroke="#f0f0dd" stroke-width="2">
+    <circle cx="92" cy="342" r="8" fill="#263d32"/>
+    <circle cx="223" cy="222" r="8" fill="#263d32"/>
+    <circle cx="345" cy="92" r="11" fill="#ed6b35"/>
+  </g>
+  <g fill="#eef0dc" font-family="monospace" font-size="10" letter-spacing="1">
+    <text x="105" y="363">01 / ESPLORA</text><text x="240" y="245">02 / LOCALIZZA</text><text x="283" y="65">03 / LEGGI</text>
+    <text x="37" y="40">N</text><text x="350" y="404">TO0 / PIEMONTE</text>
+  </g>
+  <path d="m40 52-6 16 6-4 6 4-6-16Z" fill="#d9ef87"/>
+  <path d="M30 403h90m-90-5v10m30-10v10m30-10v10m30-10v10" stroke="#b9c6a2"/>
+</svg>

@@ -2,111 +2,134 @@
 * { box-sizing: border-box; }
 body { margin: 0; }
 .biblio {
-  background: #f4f1e9; color: #22231f; font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 25px;
+  /* Palette in bianco e nero condivisa da catalogo e biblioteche. */
+  --color-paper: #ffffff;
+  --color-surface: #ffffff;
+  --color-field: var(--color-surface);
+  --color-ink: #111111;
+  --color-muted: #595959;
+  --color-border: #858585;
+  --color-divider: #dddddd;
+  --color-accent: #111111;
+  --color-accent-hover: #333333;
+  --color-on-accent: var(--color-surface);
+  --color-soft: #f2f2f2;
+  --color-selected: var(--color-soft);
+  --color-selected-hover: var(--color-divider);
+  --color-success-bg: #e3f3e8;
+  --color-success: #22633b;
+  --color-warning-bg: #fff0dc;
+  --color-warning: #87500c;
+  color-scheme: light;
+  background: var(--color-paper); color: var(--color-ink); font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 25px;
   & button, & input, & select { font: inherit; }
   & button, & a, & input, & select { -webkit-tap-highlight-color: transparent; }
   & button, & select { cursor: pointer; }
   & a { color: inherit; text-decoration: none; }
   & button { color: inherit; }
-  & button:disabled { opacity: .45; cursor: default; }
-  & :focus-visible { outline: 3px solid #d33c16; outline-offset: 5px; }
+  & button:disabled { background: var(--color-soft); color: var(--color-muted); border-color: var(--color-divider); opacity: 1; cursor: default; }
+  & :focus-visible { outline: 3px solid var(--color-accent); outline-offset: 5px; }
   & [hidden] { display: none !important; }
-  & .biblio-header { display: flex; align-items: center; justify-content: space-between; gap: 35px; max-width: 1320px; margin: auto; padding: 25px 45px; border-bottom: 2px solid #252621; }
-  & .biblio-logo { font: 800 35px/40px Arial, Helvetica, sans-serif; letter-spacing: -2px; white-space: nowrap; }
-  & .biblio-wordmark { font-weight: 400; }
-  & .biblio-logo-mark { display: inline-block; margin-left: 10px; color: #c53b18; font-size: 30px; }
-  & .biblio-nav { display: flex; gap: 30px; }
-  & .biblio-tab { border: 0; background: none; padding: 10px 0; color: #61635b; }
-  & .biblio-tab[aria-pressed="true"] { color: #252621; box-shadow: 0 2px #252621; }
-  & #saved-count { display: inline-flex; align-items: center; justify-content: center; min-width: 25px; height: 25px; border-radius: 50%; background: #e5e2d7; font-size: 12px; margin-left: 5px; }
+  & .biblio-header { display: flex; align-items: center; justify-content: space-between; gap: 35px; max-width: 1320px; margin: auto; padding: 25px 45px; border-bottom: 2px solid var(--color-ink); }
+  & .biblio-logo { font: 900 35px/40px Arial, Helvetica, sans-serif; letter-spacing: -2px; white-space: nowrap; }
+  & .biblio-wordmark { font-weight: 900; }
+  & .biblio-logo-mark { display: inline-flex; align-items: center; justify-content: center; width: 35px; height: 35px; margin-left: 10px; color: var(--color-ink); background: var(--color-selected); font-size: 30px; border-radius: 50%; }
+  & .biblio-nav { display: flex; flex-wrap: wrap; gap: 10px 30px; }
+  & .biblio-tab { border: 0; background: none; padding: 10px 0; color: var(--color-muted); }
+  & .biblio-tab[aria-pressed="true"], & .biblio-tab[aria-current="page"] { color: var(--color-ink); box-shadow: 0 2px var(--color-ink); }
+  & #saved-count { display: inline-flex; align-items: center; justify-content: center; min-width: 25px; height: 25px; border-radius: 50%; background: var(--color-soft); font-size: 12px; margin-left: 5px; }
   & .biblio-external { font-size: 13px; }
-  & .biblio-main { max-width: 1200px; margin: auto; padding: 0 45px; }
-  & .biblio-hero { display: flex; align-items: center; justify-content: space-between; gap: 50px; padding: 70px 0 65px; }
+  & .biblio-main { max-width: 1320px; margin: auto; padding: 0 45px; }
+  & .biblio-hero { padding: 45px 0 35px; }
   & .biblio-eyebrow { font-size: 10px; letter-spacing: 2px; font-weight: bold; margin: 0 0 15px; }
-  & h1 { font: 800 65px/65px Arial, Helvetica, sans-serif; letter-spacing: -3px; margin: 0 0 25px; }
-  & h1 em { color: #c53b18; font-weight: normal; font-family: Georgia, serif; }
-  & .biblio-description { color: #66675f; font-size: 15px; line-height: 25px; }
-  & .biblio-art { position: relative; width: 340px; height: 325px; flex-shrink: 0; }
-  & .biblio-poster { position: absolute; top: 0; left: 15px; width: 245px; height: 300px; background: #ec542a; border: 1px solid #252621; padding: 20px; transform: rotate(-7deg); box-shadow: 7px 7px 0 #252621; overflow: hidden; }
-  & .biblio-poster-label { display: block; font: 8px/15px monospace; letter-spacing: 1px; border-bottom: 1px solid #252621; padding-bottom: 10px; }
-  & .biblio-poster strong { display: block; margin-top: 20px; font: 700 32px/33px Arial, sans-serif; letter-spacing: -1px; }
-  & .biblio-poster-star { display: block; font-size: 85px; line-height: 90px; }
-  & .biblio-poster-foot { position: absolute; bottom: 15px; right: 15px; font: 8px/15px monospace; writing-mode: vertical-rl; }
-  & .biblio-ticket { position: absolute; bottom: 0; right: 0; width: 150px; background: #fffdf6; padding: 20px 15px 10px; transform: rotate(8deg); box-shadow: 0 5px 15px #25262120; border-top: 3px solid #252621; border-bottom: 2px dashed #c9c7bc; }
-  & .biblio-ticket > span { display: block; font: 8px/15px monospace; }
-  & .biblio-ticket strong { display: block; font: 20px/23px Georgia, serif; margin: 10px 0 15px; }
-  & .biblio-barcode { height: 35px; background: repeating-linear-gradient(90deg, #252621 0 2px, transparent 2px 4px, #252621 4px 5px, transparent 5px 9px, #252621 9px 13px, transparent 13px 15px); }
-  & .biblio-ticket small { display: block; text-align: center; font: 9px/20px monospace; letter-spacing: 2px; }
-  & .biblio-search { background: #fffdf6; border: 2px solid #252621; border-radius: 0; padding: 25px 30px 20px; box-shadow: 6px 6px 0 #dedbcf; }
+  & h1 { font: 900 70px/65px Arial, Helvetica, sans-serif; letter-spacing: -3px; margin: 0 0 25px; }
+  & h1 em { color: var(--color-accent); font-weight: 900; font-style: normal; }
+  & .biblio-description { color: var(--color-muted); font-size: 15px; line-height: 25px; }
+  & .biblio-search { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 5px; padding: 25px 30px 20px; box-shadow: none; }
   & .biblio-label { display: block; font: bold 11px/20px monospace; letter-spacing: 2px; margin-bottom: 15px; }
-  & .biblio-searchbar { display: flex; align-items: center; gap: 15px; border: 1px solid #b7b8ac; border-radius: 0; padding: 5px 5px 5px 20px; }
+  & .biblio-searchbar { display: flex; align-items: center; gap: 15px; border: 1px solid var(--color-border); border-radius: 0; padding: 5px 5px 5px 20px; }
   & .biblio-searchbar > span { font-size: 30px; }
-  & input { min-width: 100px; flex: 1; background: transparent; border: 0; padding: 10px 0; }
-  & select { background: transparent; border: 0; color: #56584f; padding: 10px; font-size: 13px; }
-  & .biblio-searchbar select { border-left: 1px solid #d6d4ca; }
-  & .biblio-primary { background: #ec542a; color: #1c211d; font-weight: bold; border: 0; border-radius: 0; padding: 12px 20px; white-space: nowrap; }
+  & input { color: var(--color-ink); min-width: 100px; flex: 1; background: transparent; border: 0; padding: 10px 0; }
+  & select { background: transparent; border: 0; color: var(--color-muted); padding: 10px; font-size: 13px; }
+  & .biblio-searchbar select { border-left: 1px solid var(--color-divider); }
+  & .biblio-primary { background: var(--color-accent); color: var(--color-on-accent); font-weight: bold; border: 1px solid var(--color-accent); border-radius: 3px; padding: 12px 20px; white-space: nowrap; }
   & .biblio-primary span { margin-left: 15px; }
-  & .biblio-suggestions { display: flex; flex-wrap: wrap; gap: 15px; align-items: center; margin-top: 15px; font-size: 11px; color: #606258; }
-  & .biblio-suggestions button { background: #e9e5da; border: 0; border-radius: 2px; padding: 0 10px; font-size: 11px; }
+  & .biblio-suggestions { display: flex; flex-wrap: wrap; gap: 15px; align-items: center; margin-top: 15px; font-size: 11px; color: var(--color-muted); }
+  & .biblio-suggestions button { background: var(--color-soft); border: 0; border-radius: 2px; padding: 0 10px; font-size: 11px; }
   & .biblio-results { padding: 45px 0; }
   & .biblio-results-head { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
-  & .biblio-results-head .biblio-eyebrow { color: #65675e; margin-bottom: 5px; }
+  & .biblio-results-head .biblio-eyebrow { color: var(--color-muted); margin-bottom: 5px; }
   & h2 { font: bold 29px/35px Arial, sans-serif; letter-spacing: -1px; margin: 0; overflow-wrap: anywhere; }
-  & .biblio-status { color: #66675f; font-size: 13px; margin: 10px 0 25px; }
-  & .biblio-empty { text-align: center; border-top: 1px solid #252621; border-bottom: 1px solid #252621; background: #ebe8de; border-radius: 0; padding: 35px 20px; }
-  & .biblio-empty > span { font-size: 40px; color: #ce4520; }
-  & h3 { font: 24px/30px Georgia, serif; margin: 15px 0 10px; }
-  & .biblio-empty p { font-size: 13px; color: #66675f; }
-  & .biblio-empty small { font-size: 9px; letter-spacing: 2px; color: #66675f; }
+  & .biblio-status { color: var(--color-muted); font-size: 13px; margin: 10px 0 25px; }
+  & .biblio-empty { text-align: center; border-top: 1px solid var(--color-ink); border-bottom: 1px solid var(--color-ink); background: var(--color-soft); border-radius: 0; padding: 35px 20px; }
+  & .biblio-empty > span { font-size: 40px; color: var(--color-accent); }
+  & h3 { font: 700 24px/30px Arial, sans-serif; margin: 15px 0 10px; }
+  & .biblio-empty p { font-size: 13px; color: var(--color-muted); }
+  & .biblio-empty small { font-size: 9px; letter-spacing: 2px; color: var(--color-muted); }
   & .biblio-cards { display: flex; flex-direction: column; }
-  & .biblio-card { display: flex; align-items: flex-start; gap: 25px; padding: 25px 0; border-bottom: 1px solid #d6d4ca; }
-  & .biblio-cover { position: relative; display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 65px; height: 90px; border-radius: 2px 5px 5px 2px; background: #e7e3d3; box-shadow: inset 5px 0 #25262115; font: 28px Georgia, serif; }
+  & .biblio-card { display: flex; align-items: flex-start; gap: 25px; padding: 25px 20px; border: 1px solid var(--color-divider); border-radius: 5px; background: var(--color-surface); margin-top: 20px; }
+  & .biblio-cover { position: relative; display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 65px; height: 90px; }
   & .biblio-cover-image { position: absolute; inset: 0; width: 65px; height: 90px; object-fit: contain; opacity: 0; }
-  & .biblio-cover-loaded { color: transparent; box-shadow: none; }
+  & .biblio-cover-placeholder { font: 60px/75px "Apple Color Emoji", "Segoe UI Emoji", sans-serif; }
+  & .biblio-cover-loaded .biblio-cover-placeholder { visibility: hidden; }
   & .biblio-cover-loaded .biblio-cover-image { opacity: 1; }
-  & .biblio-card:nth-child(3n + 2) .biblio-cover { background: #edb49a; }
-  & .biblio-card:nth-child(3n) .biblio-cover { background: #d7dec8; }
   & .biblio-card-content { flex: 1; min-width: 0; overflow-wrap: anywhere; }
   & .biblio-card h3 { margin: 0 0 10px; font-size: 22px; overflow-wrap: anywhere; }
-  & .biblio-card p { margin: 5px 0; font-size: 13px; color: #61635b; }
-  & .biblio-card a { display: inline-block; font-size: 12px; border-bottom: 1px solid #a5a798; margin-top: 10px; }
-  & .biblio-save { background: transparent; border: 1px solid #8c8f80; border-radius: 2px; padding: 5px 12px; font-size: 12px; white-space: nowrap; }
-  & .biblio-save[aria-pressed="true"] { background: #e0e5d1; }
+  & .biblio-card p { margin: 5px 0; font-size: 13px; color: var(--color-muted); }
+  & .biblio-card a { display: inline-block; font-size: 12px; border-bottom: 1px solid var(--color-border); margin-top: 10px; }
+  & .biblio-save { background: transparent; border: 1px solid var(--color-border); border-radius: 2px; padding: 5px 12px; font-size: 12px; white-space: nowrap; }
+  & .biblio-save[aria-pressed="true"] { background: var(--color-selected); }
   & .biblio-pagination { display: flex; justify-content: center; align-items: center; gap: 25px; margin-top: 30px; font-size: 13px; }
-  & .biblio-pagination button { background: white; border: 1px solid #8c8f80; border-radius: 2px; padding: 8px 15px; }
-  & .biblio-note { display: flex; align-items: center; gap: 20px; padding: 25px; background: #e9e5da; border-radius: 0; border-left: 5px solid #ec542a; margin-bottom: 45px; }
+  & .biblio-pagination button { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 2px; padding: 8px 15px; }
+  & .biblio-note { display: flex; align-items: center; gap: 20px; padding: 25px; background: var(--color-soft); border-radius: 0; border-left: 5px solid var(--color-accent); margin-bottom: 45px; }
   & .biblio-note > span { font-size: 30px; }
-  & .biblio-note p { font-size: 12px; line-height: 20px; margin: 5px 0 0; color: #5d6055; }
+  & .biblio-note p { font-size: 12px; line-height: 20px; margin: 5px 0 0; color: var(--color-muted); }
   & .biblio-note a { font-size: 12px; margin-left: auto; white-space: nowrap; }
-  & .biblio-footer { display: flex; align-items: center; gap: 25px; border-top: 1px solid #d6d4ca; padding: 25px 45px; max-width: 1320px; margin: auto; font-size: 10px; color: #66675f; }
-  & .biblio-footer .biblio-logo { font-size: 25px; color: #252621; }
+  & .biblio-footer { display: flex; align-items: center; gap: 25px; border-top: 1px solid var(--color-divider); padding: 25px 45px; max-width: 1320px; margin: auto; font-size: 10px; color: var(--color-muted); }
+  & .biblio-footer .biblio-logo { font-size: 25px; color: var(--color-ink); }
   & .biblio-footer > span:last-child { margin-left: auto; }
   & .biblio-sr { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 }
 
 .biblio {
-  & .biblio-availability { display: flex; align-items: flex-start; flex-direction: column; gap: 5px; margin-top: 15px; font-size: 12px; color: #66675f; }
-  & .biblio-availability-badge { display: inline-flex; padding: 0 10px; border-radius: 2px; background: #eeeee6; color: #626756; font-size: 12px; }
-  & .biblio-availability-badge[data-state="available"] { background: #e2eddf; color: #285737; }
-  & .biblio-availability-badge[data-state="unavailable"] { background: #f4e8d8; color: #855725; }
+  & .biblio-availability { display: flex; align-items: flex-start; flex-direction: column; gap: 5px; margin-top: 15px; font-size: 12px; color: var(--color-muted); }
+  & .biblio-availability-badge { display: inline-flex; padding: 0 10px; border-radius: 2px; background: var(--color-soft); color: var(--color-muted); font-size: 12px; }
+  & .biblio-availability-badge[data-state="available"] { background: var(--color-success-bg); color: var(--color-success); }
+  & .biblio-availability-badge[data-state="unavailable"] { background: var(--color-warning-bg); color: var(--color-warning); }
   & .biblio-availability-details { font-size: 12px; }
   & .biblio-availability-details summary { cursor: pointer; }
   & .biblio-availability-details p { padding: 5px 0; max-width: 750px; font-size: 12px; }
-  & .biblio-availability small { font-size: 10px; color: #66675f; }
+  & .biblio-availability small { font-size: 10px; color: var(--color-muted); }
   & .biblio-availability-retry { border: 0; padding: 0; background: transparent; text-decoration: underline; font-size: 12px; }
 }
 
 .biblio {
-  & .biblio-library { padding: 15px 0; border-top: 1px solid #d6d4ca; margin-top: 15px; }
+  & .biblio-library-box { margin-top: 20px; border: 1px solid var(--color-border); background: var(--color-surface); overflow-x: auto; }
+  & .biblio-library { display: flex; gap: 15px; padding: 20px 15px; margin: 0; }
+  & .biblio-library + .biblio-library { border-top: 1px solid var(--color-divider); }
+  & .biblio-library-cell { flex: 1; min-width: 0; font-size: 12px; line-height: 20px; }
+  & .biblio-library-head { padding-top: 15px; padding-bottom: 15px; background: var(--color-soft); }
+  & .biblio-library-head .biblio-library-cell { font: bold 10px/15px Arial, sans-serif; text-transform: uppercase; letter-spacing: 1px; color: var(--color-muted); }
+  & .biblio-library-identity { flex: 1.3; }
+  & .biblio-library-identity a { display: block; width: fit-content; }
+  & .biblio-library-place small { display: block; color: var(--color-muted); margin-top: 5px; }
+  & .biblio-library-shelf + .biblio-library-shelf { margin-top: 5px; }
   & .biblio-library-name { font-size: 13px; }
-  & .biblio-library .biblio-availability { margin-top: 5px; }
+  & .biblio-library .biblio-availability { margin-top: 0; line-height: 20px; }
+  & .biblio-library .biblio-availability-details { margin-top: 10px; }
+}
+
+@media (max-width: 850px) {
+  .biblio {
+    & .biblio-library { min-width: 650px; }
+  }
 }
 
 .biblio {
-  & .biblio-primary:hover { background: #f16a43; }
-  & .biblio-tab:hover, & .biblio-external:hover, & .biblio-card a:hover { color: #c53b18; }
-  & .biblio-save:hover, & .biblio-pagination button:not(:disabled):hover { background: #e9e5da; }
-  & ::selection { background: #f3a17e; color: #22231f; }
+  & .biblio-primary:not(:disabled):hover { background: var(--color-accent-hover); }
+  & .biblio-tab:hover, & .biblio-external:hover, & .biblio-card a:hover { color: var(--color-accent); }
+  & .biblio-save:not(:disabled):hover, & .biblio-pagination button:not(:disabled):hover { background: var(--color-soft); }
+  & ::selection { background: var(--color-selected-hover); color: var(--color-ink); }
 }
 
 /* Tablet: lascia spazio al testo e porta la ricerca su due righe. */
@@ -115,9 +138,8 @@ body { margin: 0; }
     & .biblio-header { flex-wrap: wrap; gap: 15px 25px; padding: 20px 30px; }
     & .biblio-nav { order: 1; width: 100%; }
     & .biblio-main { padding: 0 30px; }
-    & .biblio-hero { gap: 25px; padding: 45px 0; }
+    & .biblio-hero { padding: 35px 0; }
     & h1 { font-size: 55px; line-height: 55px; }
-    & .biblio-art { width: 300px; }
     & .biblio-searchbar { flex-wrap: wrap; padding: 10px; }
     & .biblio-searchbar input { flex-basis: calc(100% - 50px); min-width: 0; }
     & .biblio-searchbar select { flex: 1; border-left: 0; }
@@ -141,23 +163,16 @@ body { margin: 0; }
     & .biblio-nav { justify-content: space-between; gap: 10px; }
     & .biblio-tab { font-size: 14px; min-height: 45px; }
     & .biblio-main { padding: 0 20px; }
-    & .biblio-hero { flex-direction: column; align-items: flex-start; gap: 25px; padding: 35px 0; }
+    & .biblio-hero { padding: 30px 0; }
     & .biblio-eyebrow { letter-spacing: 1px; }
     & h1 { font-size: 50px; line-height: 50px; letter-spacing: -2px; margin-bottom: 20px; }
     & .biblio-description { margin-bottom: 0; }
-    & .biblio-art { align-self: center; width: 270px; height: 265px; margin: 10px 0; }
-    & .biblio-poster { width: 200px; height: 245px; padding: 15px; }
-    & .biblio-poster-label { font-size: 7px; letter-spacing: 0; }
-    & .biblio-poster strong { font-size: 25px; line-height: 25px; margin-top: 15px; }
-    & .biblio-poster-star { font-size: 65px; line-height: 70px; }
-    & .biblio-ticket { width: 130px; padding: 15px 10px 10px; }
-    & .biblio-ticket strong { font-size: 18px; line-height: 20px; }
-    & .biblio-search { padding: 20px 15px; box-shadow: 4px 4px 0 #dedbcf; }
+    & .biblio-search { padding: 20px 15px; box-shadow: none; }
     & .biblio-label { letter-spacing: 1px; }
     & .biblio-searchbar { gap: 10px; }
     & .biblio-searchbar > span { display: none; }
     & .biblio-searchbar input { flex-basis: 100%; width: 100%; }
-    & .biblio-searchbar select { width: 100%; flex-basis: 100%; border-top: 1px solid #d6d4ca; }
+    & .biblio-searchbar select { width: 100%; flex-basis: 100%; border-top: 1px solid var(--color-divider); }
     & input, & select { font-size: 16px; min-height: 45px; }
     & .biblio-primary { width: 100%; min-height: 45px; padding: 10px 15px; }
     & .biblio-suggestions { gap: 10px; }
@@ -187,4 +202,187 @@ body { margin: 0; }
     & .biblio-footer { flex-direction: column; align-items: flex-start; gap: 10px; padding: 25px 20px; }
     & .biblio-footer p { margin: 0; }
   }
+}
+
+/* Selezione delle biblioteche e riepilogo nel catalogo. */
+.biblio {
+  & .biblio-selection-summary { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0 0 20px; font-size: 13px; line-height: 20px; overflow-wrap: anywhere; }
+  & .biblio-selection-tags { display: flex; flex-wrap: wrap; gap: 10px; min-width: 0; max-width: 100%; }
+  & .biblio-selection-summary a { display: inline-block; text-decoration: underline; padding: 10px 0; }
+  & .biblio-intro { padding: 50px 0 20px; max-width: 750px; }
+  & .biblio-directory-selection { padding: 25px; border: 1px solid var(--color-border); border-radius: 5px; background: var(--color-surface); box-shadow: none; }
+  & .biblio-directory-selected { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+  & .biblio-library-chip { border: 1px solid var(--color-border); background: var(--color-selected); padding: 10px 15px; min-height: 45px; text-align: left; overflow-wrap: anywhere; max-width: 100%; }
+  & .biblio-directory-selection .biblio-primary { display: inline-block; text-align: center; white-space: normal; }
+  & .biblio-directory-search { padding: 40px 0; }
+  & .biblio-directory-filters { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 20px; }
+  & .biblio-directory-filters label { display: flex; flex-direction: column; gap: 5px; min-width: 0; font-size: 13px; font-weight: bold; }
+  & .biblio-directory-query { flex: 1; }
+  & .biblio-directory-filters input, & .biblio-directory-filters select { width: 100%; min-width: 0; min-height: 50px; padding: 10px 15px; border: 1px solid var(--color-border); background: var(--color-surface); font-size: 16px; font-weight: normal; }
+  & .biblio-directory-list { display: flex; flex-direction: column; }
+  & .biblio-directory-item { display: flex; align-items: flex-start; gap: 15px; padding: 20px 10px; border-bottom: 1px solid var(--color-divider); cursor: pointer; }
+  & .biblio-directory-item:has(input:checked) { background: var(--color-selected); }
+  & .biblio-directory-item input { flex: none; min-width: 0; min-height: 0; width: 20px; height: 20px; margin: 5px 0; padding: 0; accent-color: var(--color-accent); }
+  & .biblio-directory-content { display: flex; flex-direction: column; min-width: 0; overflow-wrap: anywhere; }
+  & .biblio-directory-content span { color: var(--color-muted); font-size: 13px; }
+  & .biblio-directory-content small { color: var(--color-muted); font-size: 12px; }
+}
+@media (max-width: 600px) {
+  .biblio {
+    & .biblio-nav { justify-content: flex-start; gap: 5px 20px; }
+    & .biblio-intro { padding: 35px 0 15px; }
+    & .biblio-directory-selection { padding: 20px 15px; box-shadow: none; }
+    & .biblio-directory-filters { flex-direction: column; align-items: stretch; gap: 15px; }
+    & .biblio-library-chip { width: 100%; }
+  }
+}
+
+
+/* Collage editoriale: carta, caratteri oversize e oggetti surreali. */
+.biblio {
+  background: var(--color-paper);
+  & .biblio-header { max-width: 1230px; border: 1px solid var(--color-border); border-radius: 50px; margin: 20px auto 0; padding: 15px 30px; gap: 20px; }
+  & .biblio-logo { font: 700 38px/40px Georgia, 'Times New Roman', serif; letter-spacing: -3px; }
+  & .biblio-wordmark { font-weight: 400; }
+  & .biblio-logo-payoff { display: block; margin-top: 5px; padding-left: 3px; font: italic 400 14px/20px Georgia, 'Times New Roman', serif; letter-spacing: .2px; color: var(--color-muted); }
+  & .biblio-logo-payoff::before { content: '✳'; display: inline-block; margin-right: 7px; font: 12px/15px Arial, sans-serif; color: var(--color-accent); vertical-align: 1px; }
+  & .biblio-logo-mark { width: auto; height: auto; border-radius: 0; background: none; color: var(--color-ink); font: 25px/30px Arial, sans-serif; margin-left: 10px; }
+  & .biblio-nav { gap: 10px 25px; }
+  & .biblio-tab { font-size: 13px; color: var(--color-muted); }
+  & .biblio-tab[aria-pressed="true"], & .biblio-tab[aria-current="page"] { color: var(--color-ink); box-shadow: 0 1px var(--color-ink); }
+  & #saved-count { background: var(--color-selected); }
+  & .biblio-external { font-size: 12px; }
+  & .biblio-eyebrow, & .biblio-label { font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 1px; }
+  & .biblio-hero > .biblio-eyebrow { margin-bottom: 20px; }
+  & .biblio-hero h1 { display: flex; flex-wrap: nowrap; align-items: baseline; gap: 15px; margin: 0; font: 900 75px/85px Arial, Helvetica, sans-serif; letter-spacing: -3px; white-space: nowrap; }
+  & .biblio-hero-line { display: block; }
+  & .biblio-hero-star { display: inline-block; padding: 0 10px; font-size: 150px; line-height: 150px; font-weight: normal; transform: rotate(-12deg); }
+  & .biblio-hero-collage { display: flex; align-items: center; justify-content: center; width: 40%; padding: 25px 15px 25px 0; font-family: "Apple Color Emoji", "Segoe UI Emoji", sans-serif; font-size: 100px; line-height: 140px; letter-spacing: -10px; }
+  & .biblio-hero-collage span:nth-child(1) { transform: rotate(-12deg); }
+  & .biblio-hero-collage span:nth-child(2) { transform: translateY(-15px) rotate(10deg); }
+  & .biblio-hero h1 em { color: var(--color-ink); font: inherit; letter-spacing: inherit; }
+  & .biblio-hero-foot { display: flex; align-items: center; justify-content: space-between; gap: 30px; margin-top: 15px; }
+  & .biblio-description { max-width: 520px; color: var(--color-muted); font-size: 15px; line-height: 25px; }
+  & .biblio-hero-serif { margin: 0; font: 400 42px/40px Georgia, serif; letter-spacing: -2px; }
+  & .biblio-search { border: 1px solid var(--color-border); border-radius: 20px; background: var(--color-surface); box-shadow: none; padding: 25px 30px; }
+  & .biblio-selection-summary { font-size: 12px; line-height: 20px; color: var(--color-muted); padding-bottom: 15px; border-bottom: 1px solid var(--color-divider); }
+  & .biblio-selection-summary a { color: var(--color-accent); }
+  & .biblio-searchbar { border-radius: 12px; background: var(--color-field); }
+  & .biblio-primary { border: 1px solid var(--color-accent); border-radius: 10px; background: var(--color-accent); color: var(--color-on-accent); font-size: 14px; min-height: 45px; }
+  & .biblio-primary:not(:disabled):hover { background: var(--color-accent-hover); }
+  & .biblio-suggestions { gap: 10px; }
+  & .biblio-suggestions button { border: 1px solid var(--color-divider); border-radius: 30px; background: transparent; padding: 5px 15px; }
+  & .biblio-suggestions button:hover { background: var(--color-selected-hover); }
+  & h2 { font-size: 32px; line-height: 35px; letter-spacing: -1px; }
+  & h3 { font: 400 28px/30px Georgia, serif; letter-spacing: -.5px; }
+  & .biblio-card { border: 1px solid var(--color-divider); background: var(--color-surface); border-radius: 15px; }
+  & .biblio-card h3 { font: 400 28px/30px Georgia, serif; }
+  & .biblio-save, & .biblio-pagination button { border-radius: 25px; min-height: 40px; padding: 5px 15px; }
+  & .biblio-save[aria-pressed="true"] { background: var(--color-selected); }
+  & .biblio-library-box { border-radius: 10px; background: var(--color-field); }
+  & .biblio-library-head { background: var(--color-selected); }
+  & .biblio-library-head .biblio-library-cell { color: var(--color-muted); }
+  & .biblio-availability-badge { border-radius: 5px; }
+  & .biblio-availability-badge[data-state="available"] { background: var(--color-success-bg); color: var(--color-success); }
+  & .biblio-availability-badge[data-state="unavailable"] { background: var(--color-warning-bg); color: var(--color-warning); }
+  & .biblio-empty { position: relative; background: var(--color-selected); border: 1px solid var(--color-divider); border-radius: 20px; }
+  & .biblio-empty > span { color: var(--color-ink); font-size: 55px; line-height: 60px; }
+  & .biblio-empty h3 { font-size: 32px; line-height: 35px; }
+  & .biblio-note { border: 1px solid var(--color-border); border-radius: 20px; background: transparent; }
+  & .biblio-note > span { font-size: 45px; }
+  & .biblio-note strong { font: 400 28px/30px Georgia, serif; letter-spacing: -1px; }
+  & .biblio-note a { color: var(--color-accent); }
+  & .biblio-footer { border-color: var(--color-divider); }
+  & .biblio-footer .biblio-logo { font-size: 30px; }
+  & .biblio-intro { position: relative; max-width: none; padding: 55px 420px 35px 0; }
+  & .biblio-intro-emoji { position: absolute; right: 15px; top: 90px; font: 120px/160px "Apple Color Emoji", "Segoe UI Emoji", sans-serif; letter-spacing: -15px; transform: rotate(-8deg); }
+  & .biblio-intro h1 { font: 900 85px/80px Arial, sans-serif; letter-spacing: -5px; }
+  & .biblio-intro h1 em { font: 400 90px/85px Georgia, serif; color: var(--color-ink); letter-spacing: -5px; }
+  & .biblio-directory-selection { border-radius: 20px; box-shadow: none; }
+  & .biblio-directory-selection h2 { font: 400 32px/35px Georgia, serif; }
+  & .biblio-library-chip { border-radius: 25px; border-color: var(--color-divider); background: var(--color-selected); font-size: 13px; }
+  & .biblio-library-chip:hover { background: var(--color-selected-hover); }
+  & .biblio-directory-filters input, & .biblio-directory-filters select { border-radius: 10px; }
+  & .biblio-directory-item { padding: 20px 15px; }
+  & .biblio-directory-item:has(input:checked) { background: var(--color-selected); border-radius: 10px; }
+  & .biblio-directory-item input { accent-color: var(--color-accent); }
+  & ::selection { background: var(--color-selected-hover); color: var(--color-ink); }
+}
+@media (max-width: 1300px) {
+  .biblio {
+    & .biblio-header { margin-left: 30px; margin-right: 30px; }
+    & .biblio-hero h1 { font-size: 60px; line-height: 70px; letter-spacing: -2px; }
+    & .biblio-hero-star { font-size: 120px; line-height: 120px; }
+    & .biblio-intro { padding-right: 340px; }
+    & .biblio-intro h1, & .biblio-intro h1 em { font-size: 70px; line-height: 70px; }
+  }
+}
+@media (max-width: 1000px) {
+  .biblio {
+    & .biblio-header { padding: 15px 25px; border-radius: 30px; }
+    & .biblio-nav { width: auto; }
+    & .biblio-external { margin-left: auto; }
+    & .biblio-hero h1 { font-size: 45px; line-height: 55px; letter-spacing: -2px; gap: 10px; }
+    & .biblio-hero-star { font-size: 90px; line-height: 90px; }
+    & .biblio-hero-collage { font-size: 70px; line-height: 100px; }
+    & .biblio-intro-emoji { font-size: 85px; line-height: 120px; }
+    & .biblio-hero-serif { font-size: 32px; line-height: 30px; }
+    & .biblio-intro { padding-right: 250px; }
+    & .biblio-intro h1, & .biblio-intro h1 em { font-size: 60px; line-height: 60px; }
+  }
+}
+@media (max-width: 700px) {
+  .biblio {
+    & .biblio-hero h1 { font-size: 32px; line-height: 40px; letter-spacing: -1px; }
+    & .biblio-hero-star { font-size: 65px; line-height: 65px; }
+    & .biblio-hero-collage { width: 100%; max-width: 400px; padding: 0; margin: -5px auto; }
+    & .biblio-hero-foot { align-items: flex-start; flex-direction: column; gap: 15px; }
+    & .biblio-hero-serif br { display: none; }
+    & .biblio-intro { padding-right: 0; }
+    & .biblio-intro-emoji { position: static; display: block; font-size: 65px; line-height: 90px; letter-spacing: 0; transform: none; }
+  }
+}
+@media (max-width: 600px) {
+  .biblio {
+    & .biblio-header { margin: 15px 15px 0; padding: 10px 15px; gap: 10px; border-radius: 25px; }
+    & .biblio-logo { font-size: 32px; line-height: 35px; }
+    & .biblio-nav { width: 100%; justify-content: space-between; gap: 5px 10px; }
+    & .biblio-tab { font-size: 12px; }
+    & .biblio-external { font-size: 10px; }
+    & .biblio-hero h1 { font-size: 25px; line-height: 35px; letter-spacing: -1px; gap: 5px; }
+    & .biblio-hero-star { font-size: 50px; line-height: 50px; padding: 0; }
+    & .biblio-hero-collage { width: 90%; max-width: 330px; }
+    & .biblio-hero-serif { font-size: 30px; line-height: 30px; }
+    & .biblio-search { padding: 20px 15px; }
+    & h2 { font-size: 27px; line-height: 30px; }
+    & .biblio-empty h3 { font-size: 27px; line-height: 30px; }
+    & .biblio-note strong { font-size: 25px; line-height: 30px; }
+    & .biblio-intro { padding-top: 35px; }
+    & .biblio-intro h1, & .biblio-intro h1 em { font-size: 55px; line-height: 55px; letter-spacing: -3px; }
+    & .biblio-directory-selection h2 { font-size: 27px; line-height: 30px; }
+  }
+}
+@media (max-width: 380px) {
+  .biblio {
+    & .biblio-hero h1 { font-size: 20px; line-height: 30px; }
+    & .biblio-hero-star { font-size: 40px; line-height: 40px; }
+    & .biblio-intro h1, & .biblio-intro h1 em { font-size: 48px; line-height: 50px; }
+  }
+}
+
+/* Stati interattivi condivisi dalle due pagine. */
+.biblio {
+  & input::placeholder { color: var(--color-muted); opacity: 1; }
+  & .biblio-searchbar:focus-within { border-color: var(--color-accent); }
+  & .biblio-tab[aria-pressed="true"], & .biblio-tab[aria-current="page"] { color: var(--color-accent); box-shadow: 0 1px var(--color-accent); }
+  & .biblio-tab:hover, & .biblio-external:hover { color: var(--color-accent-hover); }
+  & .biblio-save[aria-pressed="true"], & .biblio-library-chip { color: var(--color-accent-hover); border-color: var(--color-accent); }
+  & .biblio-save[aria-pressed="true"]:hover { background: var(--color-selected-hover); }
+  & .biblio-card a, & .biblio-availability-details summary, & .biblio-availability-retry { color: var(--color-accent); }
+  & .biblio-card a:hover, & .biblio-selection-summary a:hover, & .biblio-note a:hover, & .biblio-availability-details summary:hover, & .biblio-availability-retry:hover { color: var(--color-accent-hover); }
+  & .biblio-directory-item:hover { background: var(--color-soft); }
+  & .biblio-directory-item:has(input:checked):hover { background: var(--color-selected-hover); }
+  & .biblio-primary:active { background: var(--color-accent-hover); }
+  & #library-load-error { color: var(--color-muted); }
+  & button:disabled { background: var(--color-soft); color: var(--color-muted); border-color: var(--color-divider); }
 }

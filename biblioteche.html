@@ -1,0 +1,17 @@
+    <section class="biblio-directory-selection" aria-labelledby="library-selection-count">
+      <h2 id="library-selection-count">I tuoi punti di partenza</h2>
+      <div id="library-selected" class="biblio-directory-selected"></div>
+      <p id="library-save-status" class="biblio-status" role="status">Si salva tutto in automatico. Scegli almeno una biblioteca.</p>
+      <a class="biblio-primary" href="?view=catalog" onclick="Biblio.navigate(event, 'catalog')">Trova un libro →</a>
+    </section>
+    <section class="biblio-directory-search" aria-label="Trova una biblioteca">
+      <div class="biblio-directory-filters">
+        <label class="biblio-directory-query" for="library-query">Nome o città<input id="library-query" type="search" placeholder="Es. Cuneo" autocomplete="off" oninput="LibraryPreferences.filter()"></label>
+        <label for="library-province">Provincia<select id="library-province" onchange="LibraryPreferences.filter()"><option value="">Tutte le province</option></select></label>
+      </div>
+      <p id="library-results-status" class="biblio-status" role="status">Un attimo, carichiamo le biblioteche…</p>
+      <p id="library-load-error" class="biblio-status" role="alert" hidden>L’elenco non si carica. Riprova tra poco: puoi già cercare nelle biblioteche selezionate.</p>
+      <button id="library-retry" class="biblio-save" onclick="LibraryPreferences.load()" hidden>Riprova</button>
+      <div id="library-list" class="biblio-directory-list" aria-busy="true"></div>
+      <p id="library-no-results" class="biblio-empty" hidden>Nessuna biblioteca trovata. Prova un altro nome o cambia i filtri.</p>
+    </section>
