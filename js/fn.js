@@ -132,6 +132,32 @@ const Biblio = (() => {
     if (className) node.className = className;
     return node;
   }
+  function bookIsbn(doc) {
+    const values = Array.isArray(doc.isbn) ? doc.isbn : [doc.isbn];
+    return values.map(value => String(value ?? '').replace(/[\s-]/g, '').toUpperCase())
+      .find(value => /^(?:\d{9}[\dX]|97[89]\d{10})$/.test(value)) || '';
+  }
+  function bookCover(doc) {
+    const cover = element('div', (doc.author || doc.syntetic_title || 'B').slice(0, 1), 'biblio-cover');
+    cover.setAttribute('aria-hidden', 'true');
+    const isbn = bookIsbn(doc);
+    if (!isbn) return cover;
+    const image = element('img', undefined, 'biblio-cover-image');
+    image.alt = '';
+    image.width = 65;
+    image.height = 90;
+    image.loading = 'lazy';
+    image.decoding = 'async';
+    image.referrerPolicy = 'no-referrer';
+    image.onload = () => cover.classList.add('biblio-cover-loaded');
+    image.onerror = () => {
+      cover.classList.remove('biblio-cover-loaded');
+      image.remove();
+    };
+    image.src = `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg?default=false`;
+    cover.append(image);
+    return cover;
+  }
   function permalink(bid, library) {
     return `https://cloud.sbn.it/opac/TO0/${encodeURIComponent(library.code)}/dettaglio/documento/${encodeURIComponent(bid)}`;
   }
@@ -164,8 +190,7 @@ const Biblio = (() => {
     const availabilityJobs = [];
     docs.forEach(doc => {
       const card = element('article', undefined, 'biblio-card');
-      const cover = element('div', (doc.author || doc.syntetic_title || 'B').slice(0, 1), 'biblio-cover');
-      cover.setAttribute('aria-hidden', 'true');
+      const cover = bookCover(doc);
       const content = element('div', undefined, 'biblio-card-content');
       content.append(element('h3', doc.syntetic_title), element('p', doc.author || 'Autore non indicato'), element('p', doc.publish || 'Pubblicazione non indicata'));
       const meta = [doc.date?.[0], doc.language?.join(', '), `SBN ${doc.bid}`].filter(Boolean).join(' · ');
@@ -207,7 +232,7 @@ const Biblio = (() => {
   }
   function toggleSave(doc) {
     if (saved.some(item => item.bid === doc.bid)) saved = saved.filter(item => item.bid !== doc.bid);
-    else saved.push({ bid: doc.bid, syntetic_title: doc.syntetic_title || 'Titolo non indicato', author: doc.author, publish: doc.publish, date: doc.date, language: doc.language, tag977: doc.tag977 });
+    else saved.push({ bid: doc.bid, syntetic_title: doc.syntetic_title || 'Titolo non indicato', author: doc.author, publish: doc.publish, date: doc.date, language: doc.language, tag977: doc.tag977, isbn: bookIsbn(doc) });
     let persisted = true;
     try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch { persisted = false; }
     render();

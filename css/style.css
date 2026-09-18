@@ -60,7 +60,10 @@ body { margin: 0; }
   & .biblio-empty small { font-size: 9px; letter-spacing: 2px; color: #66675f; }
   & .biblio-cards { display: flex; flex-direction: column; }
   & .biblio-card { display: flex; align-items: flex-start; gap: 25px; padding: 25px 0; border-bottom: 1px solid #d6d4ca; }
-  & .biblio-cover { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 65px; height: 90px; border-radius: 2px 5px 5px 2px; background: #e7e3d3; box-shadow: inset 5px 0 #25262115; font: 28px Georgia, serif; }
+  & .biblio-cover { position: relative; display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 65px; height: 90px; border-radius: 2px 5px 5px 2px; background: #e7e3d3; box-shadow: inset 5px 0 #25262115; font: 28px Georgia, serif; }
+  & .biblio-cover-image { position: absolute; inset: 0; width: 65px; height: 90px; object-fit: contain; opacity: 0; }
+  & .biblio-cover-loaded { color: transparent; box-shadow: none; }
+  & .biblio-cover-loaded .biblio-cover-image { opacity: 1; }
   & .biblio-card:nth-child(3n + 2) .biblio-cover { background: #edb49a; }
   & .biblio-card:nth-child(3n) .biblio-cover { background: #d7dec8; }
   & .biblio-card-content { flex: 1; min-width: 0; }
