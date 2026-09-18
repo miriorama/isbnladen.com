@@ -51,7 +51,7 @@ body { margin: 0; }
   & .biblio-results { padding: 45px 0; }
   & .biblio-results-head { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
   & .biblio-results-head .biblio-eyebrow { color: #65675e; margin-bottom: 5px; }
-  & h2 { font: bold 29px/35px Arial, sans-serif; letter-spacing: -1px; margin: 0; }
+  & h2 { font: bold 29px/35px Arial, sans-serif; letter-spacing: -1px; margin: 0; overflow-wrap: anywhere; }
   & .biblio-status { color: #66675f; font-size: 13px; margin: 10px 0 25px; }
   & .biblio-empty { text-align: center; border-top: 1px solid #252621; border-bottom: 1px solid #252621; background: #ebe8de; border-radius: 0; padding: 35px 20px; }
   & .biblio-empty > span { font-size: 40px; color: #ce4520; }
@@ -66,7 +66,7 @@ body { margin: 0; }
   & .biblio-cover-loaded .biblio-cover-image { opacity: 1; }
   & .biblio-card:nth-child(3n + 2) .biblio-cover { background: #edb49a; }
   & .biblio-card:nth-child(3n) .biblio-cover { background: #d7dec8; }
-  & .biblio-card-content { flex: 1; min-width: 0; }
+  & .biblio-card-content { flex: 1; min-width: 0; overflow-wrap: anywhere; }
   & .biblio-card h3 { margin: 0 0 10px; font-size: 22px; overflow-wrap: anywhere; }
   & .biblio-card p { margin: 5px 0; font-size: 13px; color: #61635b; }
   & .biblio-card a { display: inline-block; font-size: 12px; border-bottom: 1px solid #a5a798; margin-top: 10px; }
@@ -107,4 +107,84 @@ body { margin: 0; }
   & .biblio-tab:hover, & .biblio-external:hover, & .biblio-card a:hover { color: #c53b18; }
   & .biblio-save:hover, & .biblio-pagination button:not(:disabled):hover { background: #e9e5da; }
   & ::selection { background: #f3a17e; color: #22231f; }
+}
+
+/* Tablet: lascia spazio al testo e porta la ricerca su due righe. */
+@media (max-width: 1000px) {
+  .biblio {
+    & .biblio-header { flex-wrap: wrap; gap: 15px 25px; padding: 20px 30px; }
+    & .biblio-nav { order: 1; width: 100%; }
+    & .biblio-main { padding: 0 30px; }
+    & .biblio-hero { gap: 25px; padding: 45px 0; }
+    & h1 { font-size: 55px; line-height: 55px; }
+    & .biblio-art { width: 300px; }
+    & .biblio-searchbar { flex-wrap: wrap; padding: 10px; }
+    & .biblio-searchbar input { flex-basis: calc(100% - 50px); min-width: 0; }
+    & .biblio-searchbar select { flex: 1; border-left: 0; }
+    & .biblio-results-head { flex-wrap: wrap; }
+    & .biblio-results-head > div { min-width: 0; }
+    & .biblio-note { flex-wrap: wrap; }
+    & .biblio-note > div { flex: 1; min-width: 0; }
+    & .biblio-note a { margin-left: 45px; }
+    & .biblio-footer { flex-wrap: wrap; gap: 10px 25px; padding: 25px 30px; }
+    & .biblio-footer > span:last-child { width: 100%; margin-left: 0; }
+  }
+}
+
+/* Smartphone: controlli comodi al tocco e schede a tutta larghezza. */
+@media (max-width: 600px) {
+  .biblio {
+    & .biblio-header { padding: 15px 20px; gap: 15px 10px; }
+    & .biblio-logo { font-size: 30px; line-height: 35px; }
+    & .biblio-logo-mark { margin-left: 5px; font-size: 25px; }
+    & .biblio-external { font-size: 11px; padding: 10px 0; }
+    & .biblio-nav { justify-content: space-between; gap: 10px; }
+    & .biblio-tab { font-size: 14px; min-height: 45px; }
+    & .biblio-main { padding: 0 20px; }
+    & .biblio-hero { flex-direction: column; align-items: flex-start; gap: 25px; padding: 35px 0; }
+    & .biblio-eyebrow { letter-spacing: 1px; }
+    & h1 { font-size: 50px; line-height: 50px; letter-spacing: -2px; margin-bottom: 20px; }
+    & .biblio-description { margin-bottom: 0; }
+    & .biblio-art { align-self: center; width: 270px; height: 265px; margin: 10px 0; }
+    & .biblio-poster { width: 200px; height: 245px; padding: 15px; }
+    & .biblio-poster-label { font-size: 7px; letter-spacing: 0; }
+    & .biblio-poster strong { font-size: 25px; line-height: 25px; margin-top: 15px; }
+    & .biblio-poster-star { font-size: 65px; line-height: 70px; }
+    & .biblio-ticket { width: 130px; padding: 15px 10px 10px; }
+    & .biblio-ticket strong { font-size: 18px; line-height: 20px; }
+    & .biblio-search { padding: 20px 15px; box-shadow: 4px 4px 0 #dedbcf; }
+    & .biblio-label { letter-spacing: 1px; }
+    & .biblio-searchbar { gap: 10px; }
+    & .biblio-searchbar > span { display: none; }
+    & .biblio-searchbar input { flex-basis: 100%; width: 100%; }
+    & .biblio-searchbar select { width: 100%; flex-basis: 100%; border-top: 1px solid #d6d4ca; }
+    & input, & select { font-size: 16px; min-height: 45px; }
+    & .biblio-primary { width: 100%; min-height: 45px; padding: 10px 15px; }
+    & .biblio-suggestions { gap: 10px; }
+    & .biblio-suggestions > span { width: 100%; }
+    & .biblio-suggestions button { min-height: 45px; padding: 5px 10px; font-size: 12px; }
+    & .biblio-results { padding: 35px 0; }
+    & .biblio-results-head { gap: 10px; }
+    & h2 { font-size: 25px; line-height: 30px; }
+    & #sort-wrap { display: flex; align-items: center; flex-wrap: wrap; }
+    & .biblio-empty { padding: 30px 15px; }
+    & .biblio-empty small { letter-spacing: 1px; }
+    & .biblio-card { flex-wrap: wrap; gap: 15px; }
+    & .biblio-cover { order: 0; }
+    & .biblio-save { order: 1; margin-left: auto; min-height: 45px; }
+    & .biblio-card-content { order: 2; flex-basis: 100%; }
+    & .biblio-card a { min-height: 45px; padding: 10px 0; }
+    & .biblio-availability { max-width: 100%; }
+    & .biblio-availability-details { min-width: 0; max-width: 100%; }
+    & .biblio-availability-details summary, & .biblio-availability-retry { min-height: 45px; padding: 10px 0; }
+    & .biblio-pagination { flex-wrap: wrap; gap: 10px; }
+    & #page-label { order: -1; width: 100%; text-align: center; }
+    & .biblio-pagination button { min-height: 45px; padding: 10px 15px; }
+    & .biblio-note { padding: 20px 15px; gap: 10px; margin-bottom: 30px; }
+    & .biblio-note > span { display: none; }
+    & .biblio-note > div { flex-basis: 100%; }
+    & .biblio-note a { margin-left: 0; min-height: 45px; padding: 10px 0; white-space: normal; }
+    & .biblio-footer { flex-direction: column; align-items: flex-start; gap: 10px; padding: 25px 20px; }
+    & .biblio-footer p { margin: 0; }
+  }
 }

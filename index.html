@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#ec542a">
   <title>isbnladen — Libri ricercatissimi</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/fn.js" defer></script>
 </head>
@@ -32,7 +33,7 @@
     <section id="search-panel" class="biblio-search" aria-label="Cerca nel catalogo">
       <form onsubmit="Biblio.submit(event)">
         <label class="biblio-label" for="query">01 / IDENTIKIT DEL LIBRO</label>
-        <div class="biblio-searchbar"><span aria-hidden="true">⌕</span><input id="query" type="search" placeholder="Titolo, autore, ISBN. Hai qualche indizio?" required maxlength="250" autocomplete="off"><label class="biblio-sr" for="field">Campo di ricerca</label><select id="field"><option value="any">Tutti i campi</option><option value="titolo">Titolo</option><option value="nome">Autore</option><option value="soggetto">Soggetto</option><option value="isbn">ISBN</option></select><button class="biblio-primary" type="submit">Avvia la ricerca <span aria-hidden="true">→</span></button></div>
+        <div class="biblio-searchbar"><span aria-hidden="true">⌕</span><input id="query" type="search" placeholder="Titolo, autore o ISBN" required maxlength="250" autocomplete="off"><label class="biblio-sr" for="field">Campo di ricerca</label><select id="field"><option value="any">Tutti i campi</option><option value="titolo">Titolo</option><option value="nome">Autore</option><option value="soggetto">Soggetto</option><option value="isbn">ISBN</option></select><button class="biblio-primary" type="submit">Avvia la ricerca <span aria-hidden="true">→</span></button></div>
       </form>
       <div class="biblio-suggestions"><span>Le prime piste:</span><button onclick="Biblio.suggest('Italo Calvino', 'nome')">Italo Calvino ↗</button><button onclick="Biblio.suggest('Elena Ferrante', 'nome')">Elena Ferrante ↗</button><button onclick="Biblio.suggest('montagna', 'any')">La montagna ↗</button></div>
     </section>
